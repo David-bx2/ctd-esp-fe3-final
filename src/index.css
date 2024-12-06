@@ -113,10 +113,32 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.dark{
-  background-color: #12121296;
+
+/* Tema claro */
+.light {
+  background-color: white;
+  color: black;
+}
+
+/* Tema oscuro */
+.dark {
+  background-color: #333;
   color: white;
 }
-.dark > a {
-  color: white;
+
+/* Estilos adicionales para otros componentes */
+.contact-container {
+  padding: 20px;
+}
+
+.detail-container {
+  padding: 20px;
+}
+
+.favs-container {
+  padding: 20px;
+}
+
+.home-container {
+  padding: 20px;
 }

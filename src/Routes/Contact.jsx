@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import Form from '../Components/Form';
-import { ThemeContext } from '../context/ThemeContext'; // Asegúrate de tener un contexto de tema
+import { ThemeContext } from '../context/ThemeContext';
 
 const Contact = () => {
-  const { theme } = useContext(ThemeContext); // Obtener el tema actual
+  const { theme } = useContext(ThemeContext); 
 
   return (
     <div className={`contact-container ${theme}`}>
-      <h2>Want to know more?</h2>
-      <p>Send us your questions and we will contact you</p>
+      <h2>Quieres saber mas?</h2>
+      <p>Envianos tus preguntas y te responderemos a la brevedad</p>
       <Form />
     </div>
   );

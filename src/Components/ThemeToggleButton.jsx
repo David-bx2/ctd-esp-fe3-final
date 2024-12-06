@@ -1,16 +1,14 @@
-// src/Components/ThemeToggleButton.jsx
-
 import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 
 const ThemeToggleButton = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext); // Accedemos al contexto del tema
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <button 
       onClick={toggleTheme} 
       style={{
-        position: 'absolute', // Posicionar el botón en la esquina
+        position: 'absolute',
         top: '20px',
         right: '20px',
         padding: '10px 20px',
@@ -21,7 +19,7 @@ const ThemeToggleButton = () => {
         cursor: 'pointer',
       }}
     >
-      {theme === 'light' ? 'Switch to Dark' : 'Switch to Light'}
+      {theme === 'light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro'}
     </button>
   );
 };

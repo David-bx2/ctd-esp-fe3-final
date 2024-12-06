@@ -1,33 +1,30 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import "./Card.css";
 
-const Card = ({ name, username, id }) => {
-  const addFav = () => {
-    const existingFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    const isAlreadyFavorite = existingFavorites.some((fav) => fav.id === id);
-    if (!isAlreadyFavorite) {
-      const updatedFavorites = [...existingFavorites, { name, username, id }];
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      alert("¡Agregado a favoritos!");
+const Card = ({ id, name, username, onAdd, onRemove, onClick, isFavorite }) => {
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    if (isFavorite) {
+      onRemove(id);
     } else {
-      alert("Este favorito ya existe.");
+      onAdd({ id, name, username });
     }
   };
 
   return (
-    <div className="card">
-      {/* Link para la página de detalle */}
-      <Link to={`/detail/${id}`}>
-        <h3>{name}</h3>
-        <p>{username}</p>
-        <p>ID: {id}</p>
-      </Link>
-      <button onClick={addFav} className="favButton">
-        Add fav
+    <div className="card" onClick={onClick}>
+      <h2>{name}</h2>
+      <p>{username}</p>
+      <button onClick={handleFavoriteClick}>
+        {isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
       </button>
     </div>
   );
 };
 
 export default Card;
+
+
+
 
 

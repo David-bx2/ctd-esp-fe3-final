@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Card from '../Components/Card';
 import { ThemeContext } from '../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [dentists, setDentists] = useState([]);
-  const { theme } = useContext(ThemeContext); // Obtener el tema actual
+  const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDentists = async () => {
@@ -13,12 +15,29 @@ const Home = () => {
         const data = await response.json();
         setDentists(data);
       } catch (error) {
-        console.error('Error fetching dentists:', error);
+        console.error('Error obteniendo Dentistas:', error);
       }
     };
 
     fetchDentists();
   }, []);
+
+  const addFavorite = (dentist) => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isAlreadyFavorite = storedFavorites.some((fav) => fav.id === dentist.id);
+
+    if (!isAlreadyFavorite) {
+      const updatedFavorites = [...storedFavorites, dentist];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      alert(`${dentist.name} agregado a favoritos!`);
+    } else {
+      alert(`${dentist.name} ya esta en favoritos!`);
+    }
+  };
+
+  const goToDetail = (id) => {
+    navigate(`/detail/${id}`);
+  };
 
   return (
     <main className={`home-container ${theme}`}>
@@ -26,7 +45,15 @@ const Home = () => {
       <div className="card-grid">
         {dentists.length > 0 ? (
           dentists.map((dentist) => (
-            <Card key={dentist.id} name={dentist.name} username={dentist.username} id={dentist.id} />
+            <Card
+              key={dentist.id}
+              name={dentist.name}
+              username={dentist.username}
+              id={dentist.id}
+              onAdd={addFavorite}
+              onClick={() => goToDetail(dentist.id)}
+              isFavorite={false}
+            />
           ))
         ) : (
           <p>Loading dentists...</p>
@@ -37,4 +64,5 @@ const Home = () => {
 };
 
 export default Home;
+
 

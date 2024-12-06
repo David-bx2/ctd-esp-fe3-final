@@ -1,0 +1,19 @@
+.dentist-detail-container {
+    padding: 20px;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 15%;
+  }
+  
+  .dentist-info h2 {
+    margin-bottom: 10px;
+  }
+  
+  .dentist-info p {
+    margin: 5px 0;
+  }

@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { ThemeContext } from '../context/ThemeContext';
+import React, { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import { ThemeContext } from "../context/ThemeContext";
+import './Detail.css';
 
-const Detail = () => {
+const DentistDetail = () => {
   const { id } = useParams();
   const [dentist, setDentist] = useState(null);
-  const { theme } = useContext(ThemeContext); // Obtener el tema actual
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const fetchDentist = async () => {
@@ -14,21 +15,25 @@ const Detail = () => {
         const data = await response.json();
         setDentist(data);
       } catch (error) {
-        console.error('Error fetching dentist details:', error);
+        console.error("Error fetching dentist details:", error);
       }
     };
+
     fetchDentist();
   }, [id]);
 
   return (
-    <div className={`detail-container ${theme}`}>
-      <h1>Detail Dentist {id}</h1>
+    <div className={`dentist-detail-container ${theme}`}>
+      <h1>Dentist Detail</h1>
       {dentist ? (
-        <div>
+        <div className="dentist-info">
           <h2>{dentist.name}</h2>
-          <p>Email: {dentist.email}</p>
-          <p>Phone: {dentist.phone}</p>
-          <p>Website: {dentist.website}</p>
+          <p><strong>Username:</strong> {dentist.username}</p>
+          <p><strong>Email:</strong> {dentist.email}</p>
+          <p><strong>Phone:</strong> {dentist.phone}</p>
+          <p><strong>Website:</strong> {dentist.website}</p>
+          <p><strong>Address:</strong> {`${dentist.address.street}, ${dentist.address.city}`}</p>
+          <p><strong>Company:</strong> {dentist.company.name}</p>
         </div>
       ) : (
         <p>Loading...</p>
@@ -37,5 +42,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
-
+export default DentistDetail;

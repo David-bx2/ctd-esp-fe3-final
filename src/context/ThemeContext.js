@@ -7,7 +7,7 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    document.body.className = theme; // Aplica la clase al body para toda la página
+    document.body.className = theme;
   }, [theme]);
 
   const toggleTheme = () => {

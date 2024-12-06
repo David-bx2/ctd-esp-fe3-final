@@ -1,0 +1,66 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+    border-bottom: 2px solid var(--navbar-border);
+  }
+  
+
+  .navbar.light {
+    --navbar-bg: #f8f9fa;
+    --navbar-text: #000;
+    --navbar-border: #ddd;
+  }
+  
+  .navbar.dark {
+    --navbar-bg: #333;
+    --navbar-text: #fff;
+    --navbar-border: #555;
+  }
+  
+
+  .nav-button {
+    margin: 0 10px;
+    padding: 8px 15px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-button:hover {
+    background-color: var(--button-hover-bg);
+  }
+  
+
+  .navbar.light .nav-button {
+    --button-bg: #e0e0e0;
+    --button-text: #000;
+    --button-hover-bg: #ccc;
+  }
+  
+  .navbar.dark .nav-button {
+    --button-bg: #555;
+    --button-text: #fff;
+    --button-hover-bg: #666;
+  }
+  
+
+  .nav-button.active {
+    font-weight: bold;
+    border: 2px solid var(--navbar-border);
+  }
+  
+
+  .toggle-theme-btn {
+    margin-left: auto;
+  }
+  

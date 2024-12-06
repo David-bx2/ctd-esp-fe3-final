@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 import Home from "./Routes/Home";
 import Favs from "./Routes/Favs";
 import Contact from "./Routes/Contact";
-import Detail from "./Routes/Detail";
+import DentistDetail from "./Routes/Detail"; 
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/favs" element={<Favs />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/detail/:id" element={<Detail />} /> {/* Ruta de detalle */}
+        <Route path="/detail/:id" element={<DentistDetail />} /> 
       </Routes>
       <Footer />
     </Router>
